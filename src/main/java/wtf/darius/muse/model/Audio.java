@@ -17,6 +17,7 @@ public class Audio {
 
     @ManyToOne
     private User user;
+
     public Audio() {
     }
 
@@ -54,4 +55,26 @@ public class Audio {
     public void setAudioName(String audioName) {
         this.audioName = audioName;
     }
+
+    //equals and hashcode
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Audio audio = (Audio) o;
+
+        return id == audio.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return id;
+    }
 }
+
+
+
+

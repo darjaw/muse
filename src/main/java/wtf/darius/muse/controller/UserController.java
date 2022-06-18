@@ -1,46 +1,56 @@
 package wtf.darius.muse.controller;
 
+import jakarta.transaction.Transactional;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import wtf.darius.muse.model.User;
 import wtf.darius.muse.service.UserService;
 
+import java.net.URL;
 import java.util.List;
 
+
+
 @RestController
-@RequestMapping("/user")
+@RequestMapping(path = "api/v1/user")
 public class UserController {
 
     private final UserService userService;
 
+    @Autowired
     public UserController(UserService userService) {
         this.userService = userService;
     }
 
-    @PostMapping("/add")
-    public String add(@RequestBody User user) {
-        userService.saveUser(user);
-        return "New user added";
-    }
-
-    @GetMapping("/getAll")
-    public List<User> getAll() {
-
+    @GetMapping
+    public List<User> getAllUsers() {
         return userService.getAllUsers();
     }
-    @GetMapping("/getById/{id}")
-    public User getById(@PathVariable int id) {
-        return userService.getUserById(id);
-    }
-    @DeleteMapping("/delete/{id}")
-    public String delete(@PathVariable int id) {
-        userService.deleteUser(id);
-        return "User deleted";
+
+    @GetMapping(path = "/{userId}")
+    public User getUser(@PathVariable int userId) {
+
+        return userService.getUser(userId);
     }
 
-//    @PutMapping("/update/{id}")
-//    public String update(@PathVariable int id, @RequestBody User user) {
-//        userService.updateUser(id, user);
-//        return "User updated";
-//    }
+    @PostMapping
+    public void registerUser(@RequestBody User user) {
+        userService.registerUser(user);
+    }
+
+
+    @PutMapping(path = "/{userId}/bio")
+    public void updateUserBio(@PathVariable("userId") int userId,
+                              @RequestParam(required = false) String bio)
+    {
+        userService.updateUserBio(userId,bio);
+    }
+
+    @DeleteMapping(path = "{userId}")
+    public void deleteUser(@PathVariable("userId") int userId) {
+        userService.deleteUser(userId);
+
+    }
+
 }
 
