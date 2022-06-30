@@ -3,7 +3,6 @@ package wtf.darius.muse.config;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import wtf.darius.muse.model.User;
 import wtf.darius.muse.repository.UserRepository;
 
 @Configuration

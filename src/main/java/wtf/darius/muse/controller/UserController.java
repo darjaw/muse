@@ -1,12 +1,10 @@
 package wtf.darius.muse.controller;
 
-import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import wtf.darius.muse.model.User;
 import wtf.darius.muse.service.UserService;
 
-import java.net.URL;
 import java.util.List;
 
 

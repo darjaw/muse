@@ -1,0 +1,66 @@
+@import url("https://fonts.googleapis.com/css2?family=Hind&family=Signika+Negative:wght@700&display=swap");
+
+body {
+  background-color: bisque;
+}
+* {
+  font-family: "Hind", sans-serif;
+  font-weight: bold;
+  font-size: 22px;
+}
+
+.bg-muse-action {
+  background-color: #fd4c60;
+}
+
+#action-button{
+  background-color: #fd4c60;
+  color: whitesmoke;
+  border: none;
+}
+#action-button:hover{
+  background-color: #cc3d4c;
+}
+
+#sorry{
+  font-size: smaller;
+}
+#muse-font {
+  font-family: "Signika Negative", sans-serif;
+  font-size: 30px;
+  margin-left: 0.5rem;
+}
+
+#muse-home {
+  margin-left: 3rem;
+}
+
+#search {
+  margin-right: 4rem;
+  margin-left: 3rem;
+}
+li {
+  margin-right: 1.5rem;
+}
+#profile-pic {
+  height: 250px;
+  width: 250px;
+
+  margin-top: 3rem;
+  margin-left: auto;
+}
+
+#fav-artists {
+  --bs-table-bg: pink;
+  --bs-table-accent-bg: #ffc107;
+
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  color: black;
+  vertical-align: middle;
+  border-color: #fd4c60;
+}
+
+#infoform {
+  margin-top: 100px;
+}

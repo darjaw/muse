@@ -1,9 +1,13 @@
 package wtf.darius.muse.model;
 
 import jakarta.persistence.*;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.net.URL;
+import java.util.Collection;
 import java.util.Objects;
+
 
 @Entity
 public class User {
@@ -18,9 +22,22 @@ public class User {
     private String userName;
     @Column (nullable = false)
     private String password;
+
     private String bio;
 
     private URL profilePicture;
+
+
+
+
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "users_roles",
+            joinColumns = @JoinColumn(
+                    name = "user_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(
+                    name = "role_id", referencedColumnName = "id"))
+    private Collection<Role> roles;
 
     //constructors
     public User() {
@@ -49,6 +66,15 @@ public class User {
     }
 
     //setters and getters
+
+    public Collection<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Collection<Role> roles) {
+        this.roles = roles;
+    }
+
     public int getId() {
         return id;
     }
@@ -70,7 +96,8 @@ public class User {
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        PasswordEncoder passEncoder = new BCryptPasswordEncoder();
+        this.password = passEncoder.encode(password);
     }
 
     public String getEmail() {
@@ -121,9 +148,7 @@ public class User {
                 "id=" + id +
                 ", email='" + email + '\'' +
                 ", userName='" + userName + '\'' +
-                ", password='" + password + '\'' +
                 ", bio='" + bio + '\'' +
-                ", profilePicture=" + profilePicture +
                 '}';
     }
 }
