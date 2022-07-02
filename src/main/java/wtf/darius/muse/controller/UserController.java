@@ -1,6 +1,9 @@
 package wtf.darius.muse.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import wtf.darius.muse.model.User;
 import wtf.darius.muse.service.UserService;
@@ -38,10 +41,12 @@ public class UserController {
 
 
     @PutMapping(path = "/{userId}/bio")
-    public void updateUserBio(@PathVariable("userId") int userId,
-                              @RequestParam(required = false) String bio)
+    @ResponseBody
+    public ResponseEntity<String> updateUserBio(@PathVariable("userId") int userId,
+                                        @RequestParam(required = false) String bio)
     {
         userService.updateUserBio(userId,bio);
+        return new ResponseEntity<>("Bio updated", HttpStatus.OK);
     }
 
     @DeleteMapping(path = "{userId}")
@@ -49,6 +54,8 @@ public class UserController {
         userService.deleteUser(userId);
 
     }
+
+
 
 }
 

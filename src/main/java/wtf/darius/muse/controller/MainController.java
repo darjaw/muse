@@ -1,8 +1,10 @@
 package wtf.darius.muse.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import java.security.Principal;
 import java.util.logging.Logger;
 
 
@@ -12,8 +14,15 @@ public class MainController {
     Logger logger = Logger.getLogger(MainController.class.getName());
 
     @GetMapping("/")
-    public String showHomePage() {
-        return "index";
+    public String showHomePage(Principal user) {
+        if (user != null) {
+            System.out.println("logged in index shown");
+            return "loggedindex";
+        }
+        else {
+            System.out.println("logged out index shown");
+            return "index";
+        }
     }
 
     @GetMapping("/error")
@@ -29,8 +38,8 @@ public class MainController {
     public String logoutSuccess() { return "logoutSuccess"; }
 
     //just a test to see if the login & role assigning works
-    @GetMapping("/secret")
-    public String showSecretPage() { return "secret"; }
+    @GetMapping("/authenticated")
+    public String showSecretPage() { return "authenticated"; }
 
     @GetMapping ("/profile")
     public String showProfilePage() { return "profile"; }
