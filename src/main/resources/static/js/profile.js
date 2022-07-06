@@ -3,7 +3,7 @@ const bio = document.getElementById('userBio');
 const email = document.getElementById('email');
 
 let request = new XMLHttpRequest();
-request .onreadystatechange = function() {
+request.onreadystatechange = function() {
    console.log("a string got here")
     if (request.readyState === XMLHttpRequest.DONE) {
         let profile = JSON.parse(request.responseText)

@@ -13,6 +13,7 @@ import wtf.darius.muse.model.Role;
 import wtf.darius.muse.model.User;
 import wtf.darius.muse.repository.UserRepository;
 
+import java.net.URL;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -66,6 +67,17 @@ public class UserService implements UserDetailsService {
 
         user.setBio(bio);
         System.out.println(user.getBio());
+        userRepository.save(user);
+    }
+
+    @Transactional
+    public void updateUserYoutube(int userId,
+                              URL youtubeLink) {
+        User user = userRepository.findById(userId).orElseThrow(() ->
+                new IllegalArgumentException("User with id " + userId + " does not exist"));
+
+        user.setYoutubeLink(youtubeLink);
+        System.out.println(user.getYoutubeLink());
         userRepository.save(user);
     }
 

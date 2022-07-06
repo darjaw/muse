@@ -2,12 +2,12 @@ package wtf.darius.muse.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import wtf.darius.muse.model.User;
 import wtf.darius.muse.service.UserService;
 
+import java.net.URL;
 import java.util.List;
 
 
@@ -47,6 +47,15 @@ public class UserController {
     {
         userService.updateUserBio(userId,bio);
         return new ResponseEntity<>("Bio updated", HttpStatus.OK);
+    }
+
+    @PutMapping(path = "/{userId}/youtube")
+    @ResponseBody
+    public ResponseEntity<String> updateUserYoutube(@PathVariable("userId") int userId,
+                                                @RequestParam(required = false) URL youtubeLink)
+    {
+        userService.updateUserYoutube(userId,youtubeLink);
+        return new ResponseEntity<>("YouTube link updated", HttpStatus.OK);
     }
 
     @DeleteMapping(path = "{userId}")

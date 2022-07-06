@@ -25,6 +25,8 @@ public class User {
 
     private String bio;
 
+    private URL youtubeLink;
+
     private URL profilePicture;
 
 
@@ -122,6 +124,14 @@ public class User {
 
     public void setProfilePicture(URL profilePicture) {
         this.profilePicture = profilePicture;
+    }
+
+    public URL getYoutubeLink() {
+        return youtubeLink;
+    }
+
+    public void setYoutubeLink(URL youtubeLink) {
+        this.youtubeLink = youtubeLink;
     }
 
     //equals hashCode toString

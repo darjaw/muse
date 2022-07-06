@@ -60,7 +60,8 @@
             <div class="col-lg-6 align-self-lg-center embed-responsive-item  ">
                 <h5 class="fw-bolder"> featured video</h5>
 
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/hAQVS_l9k_k"
+                    <!--suppress HtmlDeprecatedAttribute -->
+                <iframe width="560" height="315" th:src="${users.getYoutubeLink()}"
                         title="YouTube video player" frameborder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowfullscreen></iframe>

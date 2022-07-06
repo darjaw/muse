@@ -13,7 +13,6 @@ public class ProfileController {
     @GetMapping(path = "/{profileId}")
     public User getProfile(@PathVariable String profileId) {
 
-
         return null;
     }
 

@@ -25,7 +25,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
    protected void configure(HttpSecurity http) throws Exception {
        http.csrf().disable()
-
+    //admin only page
                .authorizeRequests()
                .antMatchers( "/","/login", "/register", "/success", "/api/v1/**", "/error").permitAll()
                .antMatchers(HttpMethod.POST, "/api/v1/**").permitAll()
