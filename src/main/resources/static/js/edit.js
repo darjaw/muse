@@ -18,7 +18,6 @@ bioForm.addEventListener('submit', (e) => {
 
 // send the youtube link to the API as a PUT request on submit
 youtubeForm.addEventListener('submit', (e) => {
-    e.preventDefault()
     console.log(youtubeEdit.value)
     let url = "http://localhost:8081/api/v1/user/1/youtube?youtubeLink=" + youtubeEdit.value;
     request.open("PUT", url, true);

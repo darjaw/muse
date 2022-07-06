@@ -49,17 +49,37 @@
 
 <!-- main content -->
 <div class="form-group">
+    <p class="text-center mt-4">
+
+        <span class="text-center mt" >current bio:</span>
+        <span class="text-center" th:value="${users.id}" th:text="${users.bio}" id="bio"></span>
+    </p>
+
     <form action="/" id="bioForm">
         <div class="container-fluid mt-4 ">
             <div class="row col-md-9">
-        <label for="bioEdit" id="bioEditText">Edit your bio</label>
-        <textarea class="form-control " id="bioEdit" rows="3"></textarea>
+                <label for="bioEdit" id="bioEditText">Edit your bio</label>
+                <textarea class="form-control " id="bioEdit" rows="3"></textarea>
                 <div class="row justify-content-center">
                     <div class="col-md-9 mt-3">
                         <button type="submit" class="btn btn-group-lg btn-primary " id="action-button">Submit</button>
                     </div>
+                </div>
+            </div>
         </div>
-        </div>
+    </form>
+
+    <form action="/" id="youtubeLink">
+        <div class="container-fluid mt-4 justify-content-center">
+            <div class="row col-md-9">
+                <label for="youtubeLinkEdit" id="youtubeLinkEditText">Edit your YouTube Link</label>
+                <textarea class="form-control " id="youtubeLinkEdit" rows="1"></textarea>
+                <div class="row justify-content-center">
+                    <div class="col-md-9 mt-3">
+                        <button type="submit" class="btn btn-group-lg btn-primary ">Submit</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </form>
 </div>
